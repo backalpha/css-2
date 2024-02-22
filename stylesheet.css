@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.header {
+    font-weight: bold;
+    font-family: "Yellowtail", cursive;
+    color: forestgreen;
+    font-size: 84px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 80%;
+}
+.left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.right {
+    flex: 2;
+    text-align: center;
+    padding: 20px;
+}
+.lyrics-container {
+    display: inline-block;
+    max-height: 500px;
+    overflow-y: auto;
+}
+.lyrics {
+    display: inline-block; /* Keep lyrics centered */
+    text-align: center; /* Center align lyrics content */
+    padding: 15px;
+    white-space: nowrap; /* Prevent line breaks */
+    overflow: hidden; /* Hide overflow */
+    animation: revealText 10s linear forwards; /* Animation applied */
+    font-size: 40px; /* Increase font size */
+    font-family: 'Great Vibes', cursive; /* Use Great Vibes font */
+}
+/* Keyframe animation */
+@keyframes revealText {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}

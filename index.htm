@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>My Web Page</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">Sidhu Moosewala</div>
+    <div class="container">
+        <div class="left">
+            <img src="your_image_url.jpeg" alt="Image" style="max-width: 160%; height: auto;">
+            <audio id="audio" controls autoplay loop style="margin-top: 20px;">
+                <source src="your_music_url.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="right">
+            <div class="lyrics-container">
+                <div id="lyrics" class="lyrics">
+                    <!-- Lyrics will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const lyrics = [
+"Show mxrci on it haha!",
+"Aye sidhu moose wala!",
+"Drrrah ooh yeah.",
+"Jatta ve jatta kivein,",
+"Ki kardae club ch,",
+"Kadon aaya jail chon,",
+"Te hun kehde jab ch.",
+"Lagda de ajj vi,",
+"Kise na kise maarte,",
+"Ki ae tere dil ch,",
+"Te ki de tere dabb ch.",
+"Ho tedda tedda jhaak na,",
+"Mind kar ankh nu,",
+"Maar na hulaare,",
+"Control kar lak nu.",
+"Cheel’an wangu nochda,",
+"Main bhavein dead body aa,",
+"Par zinda jism’an di bhukh,",
+"Naiyo es jatt nu.",
+"Ho vair ae dimaag ch,",
+"Te dil mere dhokha ae,",
+"Bach ja tu bach ja,",
+"Ni tere kole mauka ae.",
+"Kyun pair nappe kaal di,",
+"Ki firdi ae bhaaldi,",
+"Niri poori maut utton,",
+"Geda tera chautha aa.",
+"Dasde koi hall ve,",
+"Vasson bahar gall ve,",
+"Thoda jeha side te,",
+"Tu mere naal chal ve.",
+"Run eh sambhni,",
+"Landua de vass na,",
+"Dulli firan tere te,",
+"Tu paa de mainu thall ve.",
+"Life ajj kal ve,",
+"Bharosa ki ae saali da,",
+"Dekh tainu samajh ke,",
+"Veham naiyo paali da.",
+"Ho kad-kaath dekh ke,",
+"Malwe de jatt da,",
+"Ve looh kanda khada hoi janda,",
+"Majhe aali da.",
+"See he had a plan yeah look!,",
+"See he had a plan,",
+"I bought the van and squeeze on a trigger as fast he can,",
+"Make sure it don’t jam and he’ll get the band,",
+"He’ll bring the money right back to his fam,",
+"This is on you, it’s not on me,",
+"It’s in your hands do you understand?,",
+"Don’t get nervous just stay focused,",
+"Aim at his dome where he stands.",
+"All of these b!tches is just a distraction,",
+"All of these all of these fashion,",
+"All of these love and all of this madness,",
+"All of these guns and all of these action damn!,",
+"All of this drilling and all of this trap,",
+"And all of the bodies,",
+"That’s droppin’ and hittin’ the floor,",
+"Woh just so tragic,",
+"F*Ckin up rather do this on my own,",
+"I’m by myself stop hittin’ my phone,",
+"I realize a lot and that i’m grown,",
+"I don’t need nothing, i’ll do this alone yeah.",
+"How can i tell if that was my dog,",
+"If he’s moving shyy see (shyy see),",
+"If she was a hoe,",
+"Then how can i trust her,",
+"When she say she wifey (wifey..),",
+"Stop playin’ these games,",
+"Cuz i need streets the shittin’ get pricey,",
+"Could cost you your life,",
+"So don’t think i like me.",
+"Ho nehde nehde lagg na,",
+"Reh methon gap te,",
+"Bhal na main labhna,",
+"Ni insta snap te.",
+"Dalla ik maarna,",
+"Aaj tere saamne,",
+"Tu aithe aa chill,",
+"Te jatt ae trap te.",
+"Glock meri lap te,",
+"30 da clip ae,",
+"Ankh jama khidi ae,",
+"Te shooter drip ae.",
+"Bhann’ke main tappju,",
+"Tu chehra mera bhullgi,",
+"Bahar bina number ton,",
+"Khadi meri bipp ae,",
+"Te vairi mera rip ae (rip mothe*fucker hoo!)."
+];
+        const lyricsElement = document.getElementById("lyrics");
+        const audioElement = document.getElementById("audio");
+        const lyricsContainer = document.querySelector(".lyrics-container");
+
+        let currentLine = 0;
+        let animationDelay = 0;
+
+        audioElement.addEventListener("timeupdate", function() {
+            const currentTime = audioElement.currentTime;
+
+            // Check if it's time to reveal next line
+            if (currentTime >= animationDelay && currentLine < lyrics.length) {
+                revealNextLine();
+            }
+        });
+
+        function revealNextLine() {
+            if (currentLine === 0) {
+                animationDelay += 10; // Delay for the first line
+            } else {
+                animationDelay += 1.5; // Delay for subsequent lines
+            }
+            setTimeout(() => {
+                if (currentLine % 4 === 0) {
+                    lyricsElement.innerHTML = "<p>" + lyrics[currentLine] + "</p>";
+                } else {
+                    lyricsElement.innerHTML += "<p>" + lyrics[currentLine] + "</p>";
+                }
+                currentLine++;
+                lyricsContainer.scrollTop = lyricsContainer.scrollHeight; // Scroll to bottom
+            }, animationDelay * 700); // Convert seconds to milliseconds
+        }
+    </script>
+</body>
+</html>
